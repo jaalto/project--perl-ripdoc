@@ -1,0 +1,39 @@
+README: ripdoc.el
+-----------------
+
+Description
+
+	Extract documentation which follows Technical Text Format[1]
+	guidelines from the begining of file; inside comment. Useful
+	for languages that do not have built-in doc-format comment
+	like Java, Python, Perl, C/C++ doxygen.
+
+Important files
+
+    	COPYING		GPL-2+ Licence
+    	INSTALL         Install instructions
+    	ChangeLog	Project change records
+
+Project details
+
+	Homepage	http://freshmeat.net/projects/perl-ripdoc
+	Bugs		Contact maintainer (see AUTHORS)
+	Source code	Contact maintainer (see AUTHORS)
+
+	Depends
+	- Standard perl, any modern version.
+
+Refences
+
+	[1] Technical Text Format. A white-paper style rules, where
+	Heading 1 is at colun 1, heading 2 is half-tab (column 4) and
+	standard text is at tab position (column 8). See comments in
+	http://git.savannah.gnu.org/cgit/emacs-tiny-tools.git/tree/lisp/tiny/tinytf.el
+
+License
+
+	This program is free software; you can redistribute and/or modify
+	program under the terms of GNU General Public license either version 2
+	of the License, or (at your option) any later version.
+
+End of file
