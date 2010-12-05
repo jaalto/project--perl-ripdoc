@@ -3,6 +3,8 @@ README: ripdoc.el
 
 Description
 
+	Extract documentation from comments at the beginning of file.
+
 	Extract documentation which follows Technical Text Format[1]
 	guidelines from the begining of file; inside comment. Useful
 	for languages that do not have built-in doc-format comment
