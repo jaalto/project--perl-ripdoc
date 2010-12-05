@@ -1,0 +1,35 @@
+2010-12-05 Sun  Jari Aalto  <jari.aalto@cante.net>
+
+	* AUTHORS, COPYING, ChangeLog, INSTALL, Makefile, README,
+	README.history, pod2man.mk: New files
+
+	* ChangeLog: copy old logs from original Tiny tools Project.
+
+	* ripdoc.pl: Minor code layout fixes. Fix typos in Help.
+
+2010-05-01 Sat  Jari Aalto  <jari.aalto@cante.net>
+
+	* ripdoc.pl (HandleCommandLineArgs): Remove
+	"require_order" from Getopt::Long::config().
+
+2008-09-20  Jari Aalto  <jari.aalto@cante.net>
+
+	* ripdoc.pl
+	(top level): Remove old FSF address.
+	(HELP): Add proper short and --long options. Improve
+	documentation. Moved /* */ java example to the BUGS section.
+	(Main): Delete EOL whitespaces.
+
+2003-01-28  Jari Aalto  <jari.aalto@cante.net>
+
+        * ripdoc.pl: Do not use #!/usr/local/bin/perl, but
+        only #!perl. Suppose perl is along path.
+
+License
+
+	This program is free software; you can redistribute and/or modify
+	program under the terms of GNU General Public license either version 2
+	of the License, or (at your option) any later version.
+
+End of file
+
