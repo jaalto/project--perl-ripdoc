@@ -1,2 +1,2 @@
-Run "make install" for system wide. For local install,
-use "make prefix=$HOME install"
+make install	       	      	    	# System wide
+make prefix=$HOME MANDIR=$HOME install  # Personal install
