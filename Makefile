@@ -89,7 +89,7 @@ install-man: $(PACKAGE).1
 	$(INSTALL_BIN) -d $(MANDIR1)
 	$(INSTALL_DATA) $(INSTALL_OBJS_MAN1) $(MANDIR1)
 
-install-bin: all
+install-bin:
 	# install-bin
 	$(INSTALL_BIN) -d $(BINDIR)
 	$(INSTALL_BIN) -s $(INSTALL_OBJS_BIN) $(BINDIR)
