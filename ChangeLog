@@ -1,3 +1,8 @@
+2010-12-17 Fri  Jari Aalto  <jari.aalto@cante.net>
+
+	* ripdoc.pl (Main): Rethink Emacs Lisp Comment handling.
+	Gueard BEGIN_REGEXP from using more than one time.
+
 2010-12-05 Sun  Jari Aalto  <jari.aalto@cante.net>
 
 	* AUTHORS, COPYING, ChangeLog, INSTALL, Makefile, README,

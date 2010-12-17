@@ -31,7 +31,7 @@ use Getopt::Long;
 #   The following variable is updated by developer's Emacs whenever
 #   this file is saved
 
-our $VERSION = '2010.1205.1646';
+our $VERSION = '2010.1217.0017';
 
 # ****************************************************************************
 #
@@ -442,10 +442,10 @@ sub Main ()
                     "\\s+--+\\s+.*)"
                     ;
 
-            $debug  and print "INIT: [$COMMENT] [$ARG]";
+            $debug  and print "INIT: COMMENT [$COMMENT] ARG [$ARG]";
         }
 
-        if ( $debug and /$BODY_MATCH_REGEXP/o )
+        if ( $debug  and  /$BODY_MATCH_REGEXP/o )
         {
             printf "!!$BODY %d [$1] [$2] $ARG", length $PREMATCH;
         }
@@ -459,7 +459,7 @@ sub Main ()
              and length $PREMATCH < 20
            )
         {
-            $debug and print "BODY: $ARG";
+            $debug  and  print "BODY: $ARG";
 
             # convert first character to uppercase.
 
@@ -482,7 +482,7 @@ sub Main ()
 
         # ....................................................... bounds ...
 
-        if  ( /^$COMMENT+\s+(?:$BEGIN_REGEXP)/oi )
+        if  ( ! $BODY  and  /^$COMMENT+\s+(?:$BEGIN_REGEXP)/oi )
         {
             $BODY = 1;
             $debug  and  printf "BEG:[$&] [$ARG]";
@@ -500,21 +500,13 @@ sub Main ()
             $BODY == 1  and  print "$name\n\n";
             $BODY++;
 
-            # .................................................... &lisp ...
-            #   Delete lisp comment and tag lines by tinybm.el
-            #   ;; ............ &thisTag ...
-            #
-            #   Also delete 3 comment markers, because they are not
-            #   text sections
-            #   ;;;Commentary:
-            #
-            #   Also delete folding.el tags ';; }}}' and ';; {{{'
+            #  Emacs Lisp Details
+            #   Ignore: ;; ............ &thisTag ...
+            #   Ignore: folding.el tags ';; }}}' and ';; {{{'
+	    #   Convert multiple comments into spaces
 
-            next if /;;;|;; \.\.|^ |}}}|{{{/;
-
-            s/^;;+[*] _//;
-            s/^;;+[*]//;
-            s/^;;+/  /;
+            next if /^;; \.\.|}}}|{{{/;
+	    s/^(;;)+/ " " x length($1) /e;
 
             # ................................................. &general ...
 
