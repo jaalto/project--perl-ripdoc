@@ -1,3 +1,7 @@
+2011-12-09 Fri  Jari Aalto  <jari.aalto@cante.net>
+
+	* README (Description): Fix typos.
+
 2010-12-17 Fri  Jari Aalto  <jari.aalto@cante.net>
 
 	* ripdoc.pl (Main): Rethink Emacs Lisp Comment handling.
