@@ -6,7 +6,7 @@ Description
 	Extract documentation from comments at the beginning of file.
 
 	Extract documentation which follows Technical Text Format[1]
-	guidelines from the begining of file; inside comment. Useful
+	guidelines from the beginning of file; inside comments. Useful
 	for languages that do not have built-in doc-format comment
 	like Java, Python, Perl, C/C++ doxygen.
 
