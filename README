@@ -32,6 +32,10 @@ Refences
 	standard text is at tab position (column 8). See comments in
 	http://git.savannah.gnu.org/cgit/emacs-tiny-tools.git/tree/lisp/tiny/tinytf.el
 
+	Program to convert TF into HTML is at
+	<http://freecode.com/projects/perl-text2html>. A showcase at
+	<http://pm-doc.sourceforge.net/doc>.
+
 License
 
 	This program is free software; you can redistribute and/or modify
