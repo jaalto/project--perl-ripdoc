@@ -1,9 +1,5 @@
 #!/usr/bin/perl
 #
-#  File id
-#
-#	 ripdoc.pl -- Rip file's documentation to Technical text format
-#
 #   Copyright
 #
 #       Copyright (C) 1997-2010 Jari Aalto
@@ -22,16 +18,33 @@
 #
 #       You should have received a copy of the GNU General Public License
 #       along with this program. If not, see <http://www.gnu.org/licenses/>.
+#
+#   Documentation
+#
+#       To read manual, start this program with option: --help
 
-use autouse 'Pod::Text'     => qw( pod2text );
-use strict;
-use English;
-use Getopt::Long;
+# ****************************************************************************
+#
+#   Globals
+#
+# ****************************************************************************
 
 #   The following variable is updated by developer's Emacs whenever
 #   this file is saved
 
-our $VERSION = '2010.1217.0017';
+our $VERSION = '2011.1210.1821';
+
+# ****************************************************************************
+#
+#   Standard modules
+#
+# ****************************************************************************
+
+use strict;
+use English;
+use Getopt::Long;
+use autouse 'Pod::Text'     => qw( pod2text );
+use autouse 'Pod::Html'     => qw( pod2html );
 
 # ****************************************************************************
 #
@@ -87,7 +100,7 @@ sub Initialize ()
 
 =head1 NAME
 
-ripdoc.pl - Rip documentation from the beginning of file
+ripdoc - Rip documentation from the beginning of file
 
 =head1 SYNOPSIS
 
@@ -97,46 +110,45 @@ ripdoc.pl - Rip documentation from the beginning of file
 
 =head2 General
 
-Perl and Java are execptions among the programming languages, because
-they include a way to embed documentating inside program. Likewise
-Perl interpreter knows POD and it can ignore those lines.
-
-In other programming languages, like in Shell programs, Procmail code,
-there is nothing out of the box that would help to document the
-program to the outside world. The choices are:
+Some programming languages, like Perl and Java, are execptions because
+they include a way to embed documentating inside a program. In other
+programming languages, like in Shell programs, Procmail scripts, Emacs
+Lisp extensions, there is nothing out of the box that would help to
+document the program to the outside world. The choices are:
 
 =over 4
 
 =item *
 
-A separate document(s) for the program is maintained: Unix man pages
-*.1, Text files .txt, Latex *.tex, texinfo Info pages *.info, SGML,
-...
+A separate document(s) for the program is maintained: nin Unix man
+page *.1 format, using text files .txt, Latex *.tex, write texinfo
+Info pages *.info, SGML, etc.
 
 =item *
 
-Programs display a brief/complete manual when invoked with -h|--help
-option.
+Programs display a brief/complete manual when invoked with B<-h< or
+B<--help> option.
 
 =item *
 
-Documentation is put to the beginning of the file and distributed
-with the file.
+Documentation is put to the beginning of the file and distributed with
+the file. User must open the file to a C<$EDITOR> to see how the
+program is used.
 
 =back
 
 This utility is aimed for the last bullet. The documentation is
 maintained at the beginning of the distributed files. Program extracts
 the documentation which follows TF (Technical text format) guidelines.
-The idea is that you can generate html docs similarly that what Perl
-utility pod2html does. The conversion goes like this:
+The idea is that you can generate e.g. HTML documentation similarly
+that what Perl utility pod2html does. The conversion goes like this:
 
-    ripdoc.pl code.sh | t2html.pl > code.html
+    ripdoc.pl program.sh | t2html > manual.html
 
 =head2 How to write documentation
 
 In order to use this program, the documentation is written in rigid
-format to the beginning of file:
+format starting from the beginning of file. An example:
 
     #!/bin/sh
     #
@@ -150,11 +162,16 @@ format to the beginning of file:
     #           Further example code at column 12
     #           More code examples at column 12
     #
-    #   Next heading
+    #   Next heading at column 4
     #
     #       txt txt txt at column 8
     #       txt txt xtx at column 8
     #       txt txt xtx at column 8
+
+That's is. It is important to keep the heading at half-tab column and
+rest of the standard paragraphs at tab column. Each position is
+advanced by 4 spaces forward leading to column 12 which is reserved
+for verbatim text, like code examples.
 
 =head2 Specification for the documenation format
 
@@ -184,30 +201,16 @@ beginning of sentence.
 Very first line determines what is the comment string that is ripped
 away from the beginning of lines. Remember to start writing of
 headings at column four and write text at standard tab column 8. You
-must not use multiple of comment markers like I<#######> below; it
-will handicap this utility.
+must not use multiple of comment markers like used below; it will
+handicap this utility.
 
     #!/bin/sh
     #
-    #######################################################
+    ####################################################### WRONG
     #
     # file.extension -- proper first line description
     #
-    #######################################################
-    #
-    # Preface starts at colum 1
-    #
-    #        txt txt txt at column 8
-    #        txt txt txt at column 8
-    #
-    #            Furher example code at column 12
-    #            More code examples at column 12
-    #
-    # Next heading here
-    #
-    #        txt txt txt at column 8
-    #        txt txt xtx at column 8
-    #        txt txt xtx at column 8
+    ####################################################### WRONG
 
 =head1 OPTIONS
 
@@ -242,7 +245,7 @@ Display help page.
 Ignore lines matching RE. The default value ignores shell I<!/slash/bang>
 lines.
 
-=item B<-v, --verbose> B<-v>
+=item B<-v, --verbose>
 
 Turn on verbose messages.
 
@@ -254,10 +257,11 @@ Display program version and contact info.
 
 =head1 EXAMPLES
 
-Send output to conversion program to generate HTML documentation:
+Extract documentation Program t2html(1) can be used to convert
+documentation into HTML.
 
-    ripdoc.pl file.sh | t2html.pl > file.sh.html
-    ripdoc.pl file.cc | t2html.pl > file.cc.html
+    ripdoc file.sh > manual.txt
+    t2html manual.txt > manual.html
 
 =head1 SEE ALSO
 
@@ -289,15 +293,12 @@ marker is determined from the start of file.
 
 =head1 AVAILABILITY
 
-http://cpan.perl.org/modules/by-authors/id/J/JA/JARIAALTO/
+http://freecode.com/projects/perl-ripdoc
+See also http://freecode.com/projects/perl-text2html
 
 =head1 AUTHOR
 
-Jari Aalto
-
-=head1 LICENSE AND COPYRIGHT
-
-Copyright (C) 1997-2010 Jari Aalto
+Program was written by Jari Aalto.
 
 This program is free software; you can redistribute and/or modify
 program under the terms of GNU General Public license either version 2
@@ -305,18 +306,39 @@ of the License, or (at your option) any later version.
 
 =cut
 
-#  LocalWords:  ripdoc
-
-sub Help (;$)
+sub Help ( ; $ $ )
 {
-    my $id  = "$LIB.Help";
-    my $msg = shift;  # optional arg, why are we here...
+    my $id   = "$LIB.Help";
+    my $msg  = shift;  # optional arg, why are we here...
+    my $type = shift;  # optional arg, type
 
-    pod2text $PROGRAM_NAME;
+    if ( $type eq -html )
+    {
+        pod2html $PROGRAM_NAME;
+    }
+    elsif ( $type eq -man )
+    {
+        eval { require Pod::Man; 1 }
+            or die "$id: Cannot generate Man: $EVAL_ERROR";
 
-    defined $msg  and  print $msg;
+        my %options;
+        $options{center} = 'Perl Dynamic DNS Update Client';
 
-    exit 1;
+        my $parser = Pod::Man->new(%options);
+        $parser->parse_from_file ($PROGRAM_NAME);
+    }
+    else
+    {
+        system "pod2text $PROGRAM_NAME";
+    }
+
+    if ( defined $msg )
+    {
+        print $msg;
+        exit 1;
+    }
+
+    exit 0;
 }
 
 # ************************************************************** &args *******
@@ -339,7 +361,7 @@ sub HandleCommandLineArgs ()
 {
     my $id = "$LIB.HandleCommandLineArgs";
 
-    my ( $help, $version, $doc );
+    my ( $help, $helpHTML, $helpMan, $version, $doc );
 
     use vars qw
     (
@@ -349,7 +371,6 @@ sub HandleCommandLineArgs ()
         $QUIET
         $debug
         $verb
-
     );
 
     # ............................................... default values ...
@@ -369,6 +390,8 @@ sub HandleCommandLineArgs ()
     GetOptions      # Getopt::Long
     (
           "help"                => \$help
+        , "help-html"           => \$helpHTML
+        , "help-man"            => \$helpMan
         , "b|begin-regexp=s"    => \$BEGIN_REGEXP
         , "doc"                 => \$doc
         , "D|debug"             => \$debug
@@ -381,6 +404,8 @@ sub HandleCommandLineArgs ()
 
     $version        and die "$VERSION $PROGNAME $CONTACT $URL\n";
     $help           and Help();
+    $helpHTML       and Help undef, -html;
+    $helpMan        and Help undef, -man;
     $verb = 1       if  $debug;
 
     if ( $doc )
@@ -482,13 +507,13 @@ sub Main ()
 
         # ....................................................... bounds ...
 
-        if  ( ! $BODY  and  /^$COMMENT+\s+(?:$BEGIN_REGEXP)/oi )
+        if  ( ! $BODY  and  /^$COMMENT+ \s+ (?:$BEGIN_REGEXP)/oix )
         {
             $BODY = 1;
             $debug  and  printf "BEG:[$&] [$ARG]";
         }
 
-        if  ( /^$COMMENT+\s+(?:$END_REGEXP)/oi )
+        if  ( /^$COMMENT+ \s+ (?:$END_REGEXP)/oix )
         {
             $BODY = 0;
             $debug  and  printf "END:[$&] [$ARG]";
@@ -531,5 +556,4 @@ sub Main ()
 
 Main();
 
-0;
-__END__
+# End of file
