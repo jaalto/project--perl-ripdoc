@@ -32,7 +32,7 @@
 #   The following variable is updated by developer's Emacs whenever
 #   this file is saved
 
-our $VERSION = '2019.0505.1502';
+our $VERSION = '2019.0505.1514';
 
 # ****************************************************************************
 #
@@ -126,7 +126,7 @@ Info pages *.info, SGML, etc.
 
 =item *
 
-Programs display a brief/complete manual when invoked with B<-h< or
+Programs display a brief/complete manual when invoked with B<-h> or
 B<--help> option.
 
 =item *
@@ -530,7 +530,7 @@ sub Main ()
             #   Ignore: folding.el tags ';; }}}' and ';; {{{'
 	    #   Convert multiple comments into spaces
 
-            next if /^;; \.\.|}}}|{{{/;
+            next if /^;; \.\.|\}\}\}|\{\{\{/;
 	    s/^(;;)+/ " " x length($1) /e;
 
             # ................................................. &general ...
