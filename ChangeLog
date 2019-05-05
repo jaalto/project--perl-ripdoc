@@ -1,14 +1,11 @@
-2011-12-10 Sat  Jari Aalto  <jari.aalto@cante.net>
+2019-05-05 Sun  Jari Aalto  <jari.aalto@cante.net>
 
-	* Makefile: Complete facelift.
+	* README (HOMEPAGE): Change to Github.
 
-	* bin/ripdoc.pl (Help): Add --help-man and improve
-	function. Clean up code and documentation.
+	* ALL: Update copyright years.
 
-2011-12-09 Fri  Jari Aalto  <jari.aalto@cante.net>
-
-	* README (Description): Fix typos.
-	(References): Add link to t2html and showcase.
+	* ripdoc.pl (Main): Fix unescaped left brace in regexp
+	for latest Perl compatibility.
 
 2010-12-17 Fri  Jari Aalto  <jari.aalto@cante.net>
 

@@ -6,7 +6,7 @@ Description
 	Extract documentation from comments at the beginning of file.
 
 	Extract documentation which follows Technical Text Format[1]
-	guidelines from the beginning of file; inside comments. Useful
+	guidelines from the begining of file; inside comment. Useful
 	for languages that do not have built-in doc-format comment
 	like Java, Python, Perl, C/C++ doxygen.
 
@@ -18,7 +18,7 @@ Important files
 
 Project details
 
-	Homepage	http://freecode.com/projects/perl-ripdoc
+	Homepage	https://github.com/jaalto/project--perl-ripdoc
 	Bugs		Contact maintainer (see file AUTHORS)
 	Source code	Contact maintainer (see file AUTHORS)
 
@@ -31,10 +31,6 @@ Refences
 	Heading 1 is at colun 1, heading 2 is half-tab (column 4) and
 	standard text is at tab position (column 8). See comments in
 	http://git.savannah.gnu.org/cgit/emacs-tiny-tools.git/tree/lisp/tiny/tinytf.el
-
-	Program to convert TF into HTML is at
-	<http://freecode.com/projects/perl-text2html>. A showcase at
-	<http://pm-doc.sourceforge.net/doc>.
 
 License
 

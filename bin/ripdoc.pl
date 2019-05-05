@@ -32,7 +32,7 @@
 #   The following variable is updated by developer's Emacs whenever
 #   this file is saved
 
-our $VERSION = '2011.1210.1821';
+our $VERSION = '2019.0505.1502';
 
 # ****************************************************************************
 #
@@ -293,8 +293,8 @@ marker is determined from the start of file.
 
 =head1 AVAILABILITY
 
-http://freecode.com/projects/perl-ripdoc
-See also http://freecode.com/projects/perl-text2html
+https://github.com/jaalto/project--perl-ripdoc
+See also https://github.com/jaalto/project--perl-text2html
 
 =head1 AUTHOR
 

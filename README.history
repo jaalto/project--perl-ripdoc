@@ -1,8 +1,8 @@
 In 2010-12-06 to preserve history, the ripdoc.el project was sliced
-from Emacs Tiny Tools[1] Project's utilitied) by filtering the
+from Emacs Tiny Tools[1] project's utilities by filtering the
 original git repository. That is the reason why the "git log" command
-look a little odd prior that date.
+look a little odd prior to that date.
 
-[1] http://freecode.com/project/emacs-tiny-tools
+[1] https://github.com/jaalto/project--emacs-tiny-tools
 
  -- 2010-12-06 Jari Aalto <jari.aalto@cante.net>
